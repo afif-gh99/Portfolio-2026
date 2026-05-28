@@ -4,7 +4,6 @@ import { setSmoothScroller } from '../lib/sectionNavigation.js'
 
 function useSmoothScroll() {
   useEffect(() => {
-    const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
     let lenis = null
     let animationFrameId = null
 
@@ -22,7 +21,7 @@ function useSmoothScroll() {
     }
 
     const startLenis = () => {
-      if (lenis || reducedMotionQuery.matches) {
+      if (lenis) {
         return
       }
 
@@ -41,20 +40,9 @@ function useSmoothScroll() {
       animationFrameId = requestAnimationFrame(raf)
     }
 
-    const handleMotionPreferenceChange = () => {
-      if (reducedMotionQuery.matches) {
-        stopLenis()
-        return
-      }
-
-      startLenis()
-    }
-
     startLenis()
-    reducedMotionQuery.addEventListener('change', handleMotionPreferenceChange)
 
     return () => {
-      reducedMotionQuery.removeEventListener('change', handleMotionPreferenceChange)
       stopLenis()
     }
   }, [])

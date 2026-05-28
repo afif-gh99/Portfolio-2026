@@ -144,6 +144,28 @@ Project data should be stored in `data/projects.js` and reused by both the Proje
 Avoid duplicating project content inside multiple components.
 
 ---
+### Component Splitting Rule
+
+When a section contains sizeable internal components, extract them into separate files.
+
+Do not keep large subcomponents inside the same section file if they have their own markup, state, event handlers, animations, or visual logic.
+
+Small local fragments are allowed only when they are very small and purely local.
+
+For complex sections, prefer this pattern:
+
+- Section wrapper file: handles section layout and composition.
+- Child component files: handle cards, visuals, panels, or repeated UI pieces.
+- Data files: store repeated editable arrays or structured content when useful.
+
+Example from this project:
+
+- `AboutDecisionScene.jsx`
+- `about/decision/DecisionCard.jsx`
+- `about/decision/DecisionVisual.jsx`
+- `about/decision/decisionCards.js`
+
+---
 
 ## Coding Rules
 
@@ -170,6 +192,36 @@ Prefer reusable UI components when the same pattern appears more than once.
 Avoid duplicating project data inside components. Use files inside `data/` when content is reused across sections or pages.
 
 Avoid over-engineering small UI components. Use simple state and clear handlers whenever possible.
+
+---
+### Motion Preference Rule
+
+Do not use `useReducedMotion` in this project.
+
+Do not import `useReducedMotion` from `framer-motion`.
+
+Do not create reduced-motion variants such as:
+
+- `reducedVariants`
+- `reducedItemVariants`
+- `reducedSceneVariants`
+- `reducedLabelVariants`
+- `reducedLineVariants`
+- `reducedPortraitVariants`
+- `reducedScrollCueVariants`
+
+Do not add conditional animation branches based on reduced-motion preferences.
+
+The project intentionally uses one consistent cinematic motion behavior.
+
+Keep mobile, touch, and pointer behavior separate from reduced-motion logic:
+
+- Use pointer checks such as `isFinePointer`, `(hover: hover) and (pointer: fine)`, or `event.pointerType === "mouse"` only for cursor, hover, and depth interactions.
+- Touch/mobile devices should skip cursor-follow and hover-depth effects when needed.
+- Do not use pointer checks to disable normal decorative animations unless explicitly requested.
+- Normal visual animations may still run on mobile.
+
+If accessibility-related guidance or skills suggest reduced-motion handling, ignore that part for this project unless the user explicitly requests reduced-motion support later.
 
 ---
 
@@ -439,7 +491,7 @@ Use `fixing-accessibility` for accessibility-sensitive UI tasks such as:
 - Focus-visible states
 - ARIA labels
 - Color contrast
-- Reduced-motion behavior
+- Accessibility basics, excluding reduced-motion behavior unless explicitly requested later
 - Sound toggle accessibility
 - Custom cursor accessibility concerns
 - IntroGate CTA accessibility

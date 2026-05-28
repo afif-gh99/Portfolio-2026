@@ -1,12 +1,11 @@
-@import url("https://fonts.googleapis.com/css2?family=Audiowide&family=Bruno+Ace+SC&family=Oxanium:wght@400;500&display=swap");
 @import "tailwindcss";
 
 @font-face {
   font-family: "Osiris";
-  src: url("./assets/fonts/Osiris.woff2") format("woff2");
+  src: url("/assets/fonts/Osiris.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
-  font-display: swap;
+  font-display: block;
 }
 
 :root {

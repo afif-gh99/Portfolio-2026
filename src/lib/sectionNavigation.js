@@ -49,15 +49,46 @@ export function scrollToSection(sectionKey) {
     return;
   }
 
-  const prefersReducedMotion = window.matchMedia(
-    "(prefers-reduced-motion: reduce)",
-  ).matches;
-
   window.scrollTo({
     top:
       sectionElement.getBoundingClientRect().top +
       window.scrollY -
       navbarOffset,
-    behavior: prefersReducedMotion ? "auto" : "smooth",
+    behavior: "smooth",
   });
+}
+
+export function getCurrentSectionKey() {
+  const registeredSections = Array.from(sectionRegistry.entries());
+  const dataSections = sectionKeys
+    .map((sectionKey) => [
+      sectionKey,
+      document.querySelector(`[data-section="${sectionKey}"]`),
+    ])
+    .filter(([, element]) => element);
+  const sectionEntries = [...registeredSections, ...dataSections];
+
+  if (sectionEntries.length === 0) {
+    return sectionKeys[0];
+  }
+
+  const measuredSections = sectionEntries.map(([sectionKey, element]) => {
+    const rect = element.getBoundingClientRect();
+
+    return {
+      sectionKey,
+      distance: Math.abs(rect.top - navbarOffset),
+      isVisible: rect.bottom > navbarOffset && rect.top < window.innerHeight,
+    };
+  });
+
+  const visibleSections = measuredSections.filter((section) => section.isVisible);
+  const closestSection = (visibleSections.length > 0
+    ? visibleSections
+    : measuredSections
+  ).sort((firstSection, secondSection) => {
+    return firstSection.distance - secondSection.distance;
+  })[0];
+
+  return closestSection?.sectionKey || sectionKeys[0];
 }

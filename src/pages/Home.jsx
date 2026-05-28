@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import { useOutletContext } from "react-router-dom";
 import Navbar from "../components/layout/Navbar.jsx";
 import Hero from "../components/sections/Hero.jsx";
+import About from "../components/sections/About.jsx";
 import { registerSection } from "../lib/sectionNavigation.js";
 
 function Home() {
@@ -20,7 +21,7 @@ function Home() {
     <main ref={homeSectionRef} data-section="home" className="min-h-screen">
       <Navbar />
       <Hero canAnimateHero={canAnimateHero} />
-      <Hero canAnimateHero={canAnimateHero} />
+      <About />
     </main>
   );
 }

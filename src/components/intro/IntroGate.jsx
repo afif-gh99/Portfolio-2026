@@ -105,7 +105,7 @@ function IntroGate({ children, onHeroAnimationReady, onIntroComplete }) {
       <AnimatePresence>
         {!hasEntered && (
           <motion.div
-            className="fixed inset-0 z-[999] overflow-hidden bg-[#020817] text-slate-100"
+            className="fixed inset-0 z-999 overflow-hidden bg-[#020817] text-slate-100"
             initial={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2, ease: cinematicEase }}
@@ -117,7 +117,7 @@ function IntroGate({ children, onHeroAnimationReady, onIntroComplete }) {
               transition={{ duration: 0.85, ease: cinematicEase }}
             >
               <div className="absolute inset-0 bg-[linear-gradient(135deg,#031225_0%,#020817_50%,#041226_100%)]" />
-              <div className="absolute inset-0 bg-[linear-gradient(rgba(125,211,252,0.055)_1px,transparent_1px),linear-gradient(90deg,rgba(125,211,252,0.045)_1px,transparent_1px)] bg-[size:42px_42px]" />
+              <div className="absolute inset-0 bg-[linear-gradient(rgba(125,211,252,0.055)_1px,transparent_1px),linear-gradient(90deg,rgba(125,211,252,0.045)_1px,transparent_1px)] bg-size-[42px_42px]" />
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_100%,rgba(56,189,248,0.13),transparent_42%)]" />
             </motion.div>
 
@@ -128,7 +128,7 @@ function IntroGate({ children, onHeroAnimationReady, onIntroComplete }) {
               transition={{ duration: 0.85, ease: cinematicEase }}
             >
               <div className="absolute inset-0 bg-[linear-gradient(135deg,#031225_0%,#020817_50%,#041226_100%)]" />
-              <div className="absolute inset-0 bg-[linear-gradient(rgba(125,211,252,0.055)_1px,transparent_1px),linear-gradient(90deg,rgba(125,211,252,0.045)_1px,transparent_1px)] bg-[size:42px_42px]" />
+              <div className="absolute inset-0 bg-[linear-gradient(rgba(125,211,252,0.055)_1px,transparent_1px),linear-gradient(90deg,rgba(125,211,252,0.045)_1px,transparent_1px)] bg-size-[42px_42px]" />
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(56,189,248,0.13),transparent_42%)]" />
             </motion.div>
 
@@ -193,7 +193,7 @@ function IntroGate({ children, onHeroAnimationReady, onIntroComplete }) {
 
                   <motion.div
                     aria-hidden="true"
-                    className="pointer-events-none absolute left-7 right-7 top-14 z-[1] h-px bg-gradient-to-r from-transparent via-cyan-200/34 to-transparent shadow-[0_0_18px_rgba(34,211,238,0.2)] sm:left-9 sm:right-9"
+                    className="pointer-events-none absolute left-7 right-7 top-14 z-1 h-px bg-linear-to-r from-transparent via-cyan-200/34 to-transparent shadow-[0_0_18px_rgba(34,211,238,0.2)] sm:left-9 sm:right-9"
                     initial={{ opacity: 0, y: 0 }}
                     animate={
                       !isReady && !isEntering
@@ -294,7 +294,18 @@ function IntroGate({ children, onHeroAnimationReady, onIntroComplete }) {
                                 ease: cinematicEase,
                               }}
                             >
-                              SYSTEM READY
+                              <motion.span
+                                className="inline-block"
+                                animate={{ opacity: [0.3, 1] }}
+                                transition={{
+                                  duration: 0.7,
+                                  repeat: Infinity,
+                                  repeatType: "mirror",
+                                  ease: "easeInOut",
+                                }}
+                              >
+                                SYSTEM READY
+                              </motion.span>
                             </motion.div>
                           )}
                         </AnimatePresence>
@@ -351,7 +362,7 @@ function IntroGate({ children, onHeroAnimationReady, onIntroComplete }) {
                               }}
                             >
                               <span className="pointer-events-none absolute inset-px rounded-[17px] border border-cyan-50/0 transition duration-300 group-hover:border-cyan-50/12" />
-                              <span className="pointer-events-none absolute inset-y-0 -left-16 w-14 -skew-x-12 bg-gradient-to-r from-transparent via-cyan-100/22 to-transparent opacity-0 blur-[1px] transition-all duration-700 ease-out group-hover:left-[115%] group-hover:opacity-100" />
+                              <span className="pointer-events-none absolute inset-y-0 -left-16 w-14 -skew-x-12 bg-linear-to-r from-transparent via-cyan-100/22 to-transparent opacity-0 blur-[1px] transition-all duration-700 ease-out group-hover:left-[115%] group-hover:opacity-100" />
                               <span className="relative z-10">
                                 UNLOCK THE EXPERIENCE →
                               </span>
