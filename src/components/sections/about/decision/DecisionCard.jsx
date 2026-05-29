@@ -10,7 +10,8 @@ const desktopEntranceOffsets = [
 
 function DecisionCard({ card, index, isLast, canUseDepthMotion, isActive }) {
   const rectRef = useRef(null);
-  const desktopOffset = desktopEntranceOffsets[index] ?? desktopEntranceOffsets[1];
+  const desktopOffset =
+    desktopEntranceOffsets[index] ?? desktopEntranceOffsets[1];
 
   const entranceVariants = {
     hidden: {
@@ -66,7 +67,7 @@ function DecisionCard({ card, index, isLast, canUseDepthMotion, isActive }) {
 
   return (
     <motion.article
-      className="group relative flex min-h-[6.75rem] overflow-hidden border border-cyan-100/12 bg-[#061426]/62 px-4 py-3 text-left shadow-[0_22px_64px_rgba(0,0,0,0.24),0_0_34px_rgba(34,211,238,0.035),inset_0_1px_0_rgba(255,255,255,0.065),inset_0_0_32px_rgba(34,211,238,0.026)] backdrop-blur-md transition-[background-color,border-color,box-shadow] duration-300 ease-out hover:border-cyan-100/28 hover:bg-[#07172a]/76 hover:shadow-[0_26px_72px_rgba(0,0,0,0.28),0_0_42px_rgba(34,211,238,0.055),inset_0_1px_0_rgba(255,255,255,0.09),inset_0_0_38px_rgba(34,211,238,0.04)] sm:min-h-[10rem] sm:px-4 sm:py-4"
+      className="group relative flex min-h-27 overflow-hidden border border-cyan-100/12 bg-[#061426]/62 px-4 py-3 text-left shadow-[0_22px_64px_rgba(0,0,0,0.24),0_0_34px_rgba(34,211,238,0.035),inset_0_1px_0_rgba(255,255,255,0.065),inset_0_0_32px_rgba(34,211,238,0.026)] backdrop-blur-md transition-[background-color,border-color,box-shadow] duration-300 ease-out hover:border-cyan-100/28 hover:bg-[#07172a]/76 hover:shadow-[0_26px_72px_rgba(0,0,0,0.28),0_0_42px_rgba(34,211,238,0.055),inset_0_1px_0_rgba(255,255,255,0.09),inset_0_0_38px_rgba(34,211,238,0.04)] sm:min-h-40 sm:px-4 sm:py-4"
       style={{ "--card-x": "50%", "--card-y": "42%" }}
       variants={entranceVariants}
       initial="hidden"
@@ -86,7 +87,7 @@ function DecisionCard({ card, index, isLast, canUseDepthMotion, isActive }) {
         aria-hidden="true"
       />
       <span
-        className="pointer-events-none absolute inset-px bg-linear-to-b from-white/[0.055] via-transparent to-cyan-200/[0.025]"
+        className="pointer-events-none absolute inset-px bg-linear-to-b from-white/5.5 via-transparent to-cyan-200/2.5"
         aria-hidden="true"
       />
       <span
@@ -94,7 +95,7 @@ function DecisionCard({ card, index, isLast, canUseDepthMotion, isActive }) {
         aria-hidden="true"
       />
       <span
-        className="pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full bg-cyan-200/[0.04] blur-2xl transition-opacity duration-300 group-hover:opacity-90"
+        className="pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full bg-cyan-200/4 blur-2xl transition-opacity duration-300 group-hover:opacity-90"
         aria-hidden="true"
       />
       <span
@@ -119,7 +120,7 @@ function DecisionCard({ card, index, isLast, canUseDepthMotion, isActive }) {
             <h3 className="font-oxanium text-[11px] font-medium uppercase tracking-[0.18em] text-cyan-100/76 transition-colors duration-300 group-hover:text-cyan-50/92 sm:text-xs sm:tracking-[0.22em]">
               {card.title}
             </h3>
-            <p className="font-oxanium mt-2 max-w-[14rem] text-xs leading-5 text-slate-200/74 sm:mt-3 sm:max-w-[13rem] sm:text-sm sm:leading-7">
+            <p className="font-oxanium mt-2 max-w-56 text-xs leading-5 text-slate-200/74 sm:mt-3 sm:max-w-52 sm:text-sm sm:leading-7">
               {card.text}
             </p>
           </div>

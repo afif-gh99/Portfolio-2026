@@ -1,7 +1,7 @@
 export const heroLines = [
   "YOU\u2019RE NOT HERE",
-  "FOR ANOTHER BASIC",
-  "PORTFOLIO.",
+  "FOR ANOTHER",
+  "BASIC PORTFOLIO.",
 ];
 
 export const heroMeta = [

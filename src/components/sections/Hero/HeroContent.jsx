@@ -30,7 +30,7 @@ function HeroContent({
 
       <motion.h1
         data-cursor="text"
-        className="font-bruno max-w-[14ch] text-[clamp(1.1rem,6vw,6rem)]  md:text-[clamp(2.1rem,3.8vw,4.1rem)] leading-[0.96] text-slate-50 drop-shadow-[0_0_24px_rgba(34,211,238,0.14)] sm:max-w-[18ch] lg:max-w-[18ch]  xl:text-[clamp(3.1rem,3.2vw,4.35rem)]"
+        className="font-bruno max-w-[14ch] text-[clamp(1.1rem,6vw,6rem)] leading-[0.96] text-slate-50 drop-shadow-[0_0_24px_rgba(34,211,238,0.14)] sm:max-w-[16ch] md:text-[clamp(2.1rem,3.6vw,3.95rem)] lg:max-w-[15.5ch] xl:text-[clamp(2.8rem,2.9vw,4rem)]"
         variants={headlineVariants}
       >
         {heroLines.map((line) => (
@@ -54,7 +54,7 @@ function HeroContent({
       </motion.p>
 
       <motion.div
-        className="font-oxanium mt-4 flex flex-wrap justify-center sm:justify-start items-center gap-2 text-[10px] md:text-base font-medium uppercase tracking-[0.16em] text-cyan-100/68 sm:gap-3"
+        className="font-oxanium mt-4 flex flex-wrap items-center justify-center gap-2 text-[10px] font-medium uppercase tracking-[0.16em] text-cyan-100/68 sm:justify-start sm:gap-3 md:text-sm xs:flex-nowrap lg:gap-3 lg:text-[0.9rem] lg:tracking-[0.14em]"
         variants={itemMotion}
       >
         {heroMeta.map((item, index) => (
@@ -69,7 +69,10 @@ function HeroContent({
         ))}
       </motion.div>
 
-      <motion.div className="mt-7 flex gap-3 items-center" variants={itemMotion}>
+      <motion.div
+        className="mt-7 flex gap-3 items-center"
+        variants={itemMotion}
+      >
         <a
           href="https://linkedin.com/in/afif-ghaziri2004"
           target="_blank"

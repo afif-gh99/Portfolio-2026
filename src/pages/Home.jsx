@@ -1,8 +1,10 @@
 import { useEffect, useRef } from "react";
 import { useOutletContext } from "react-router-dom";
 import Navbar from "../components/layout/Navbar.jsx";
+import ScrollIndicator from "../components/layout/ScrollIndicator.jsx";
 import Hero from "../components/sections/Hero.jsx";
 import About from "../components/sections/About.jsx";
+import Experience from "../components/sections/Experience.jsx";
 import { registerSection } from "../lib/sectionNavigation.js";
 
 function Home() {
@@ -20,8 +22,10 @@ function Home() {
   return (
     <main ref={homeSectionRef} data-section="home" className="min-h-screen">
       <Navbar />
+      <ScrollIndicator />
       <Hero canAnimateHero={canAnimateHero} />
       <About />
+      <Experience />
     </main>
   );
 }

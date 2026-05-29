@@ -49,7 +49,7 @@ function AboutOutcomeScene() {
         className="relative mx-auto flex w-full flex-col items-center justify-center gap-10 text-center lg:flex-row lg:gap-16 lg:text-left xl:gap-28 2xl:gap-50"
       >
         <motion.div
-          className="mx-auto max-w-2xl lg:mx-0 lg:min-w-[32rem]"
+          className="mx-auto max-w-2xl lg:mx-0 lg:min-w-lg"
           variants={textContainerVariants}
           initial="hidden"
           animate={isOutcomeInView ? "visible" : "hidden"}
@@ -65,7 +65,7 @@ function AboutOutcomeScene() {
 
           <motion.p
             data-cursor="text"
-            className="font-oxanium mx-auto mt-5 max-w-[20rem] text-sm leading-7 text-slate-200/76 sm:max-w-2xl sm:text-lg sm:leading-9 lg:mx-0 lg:max-w-[36rem]"
+            className="font-oxanium mx-auto mt-5 max-w-[20rem] text-sm leading-7 text-slate-200/76 sm:max-w-2xl sm:text-lg sm:leading-9 lg:mx-0 lg:max-w-xl"
             variants={textItemVariants}
           >
             My business background helps me think beyond the interface &mdash;

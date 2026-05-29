@@ -38,7 +38,7 @@ function AboutDecisionScene() {
     >
       <div
         ref={sceneContentRef}
-        className="relative mx-auto w-full max-w-[22rem] sm:max-w-5xl"
+        className="relative mx-auto w-full max-w-88 sm:max-w-5xl"
       >
         <h2
           data-cursor="text"

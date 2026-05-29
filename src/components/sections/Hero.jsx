@@ -21,7 +21,7 @@ function Hero({ canAnimateHero = true }) {
       ref={heroSectionRef}
       className="relative flex min-h-dvh items-center overflow-hidden px-5 pb-12 pt-28 sm:px-8 sm:pb-14 sm:pt-32 lg:h-dvh lg:min-h-168 lg:pb-10 lg:pt-28"
     >
-      <div className="mx-auto grid w-full max-w-6xl items-center gap-10 lg:grid-cols-[minmax(0,1.05fr)_minmax(320px,0.82fr)] lg:gap-10 xl:max-w-7xl xl:gap-14">
+      <div className="mx-auto grid w-full max-w-6xl items-center gap-10 lg:grid-cols-[minmax(0,1.05fr)_minmax(320px,0.82fr)] lg:gap-10 xl:max-w-6xl  xl:gap-10">
         <HeroContent
           animationState={animationState}
           contentVariants={contentVariants}

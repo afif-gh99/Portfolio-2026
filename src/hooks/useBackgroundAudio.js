@@ -10,7 +10,7 @@ import {
   stopBackgroundAudio,
 } from "../lib/backgroundAudio.js";
 
-const BACKGROUND_VOLUME = 0.23;
+const BACKGROUND_VOLUME = 0.4;
 
 function useBackgroundAudio() {
   const backgroundAudioRef = useRef(null);

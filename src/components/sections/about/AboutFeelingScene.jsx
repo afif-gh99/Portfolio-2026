@@ -30,11 +30,17 @@ function AboutFeelingScene() {
       <div className="pointer-events-none absolute left-1/2 top-1/2 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-300/10 blur-3xl" />
       <div className="relative">
         <div className="mb-6 flex items-center justify-center gap-4">
-          <span className="h-px w-12 bg-cyan-100/24" aria-hidden="true" />
+          <span
+            aria-hidden="true"
+            className="h-px w-10 bg-linear-to-r from-transparent to-cyan-100/28 sm:w-12"
+          />
           <p className="font-osiris text-xs tracking-[0.32em] text-cyan-100/72 sm:text-sm">
             02 / ABOUT
           </p>
-          <span className="h-px w-12 bg-cyan-100/24" aria-hidden="true" />
+          <span
+            aria-hidden="true"
+            className="h-px w-10 bg-linear-to-l from-transparent to-cyan-100/28 sm:w-12"
+          />
         </div>
         <h2
           data-cursor="text"

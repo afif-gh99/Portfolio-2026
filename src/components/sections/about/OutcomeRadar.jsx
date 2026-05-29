@@ -73,7 +73,7 @@ function RadarConcept({ concept, isActive }) {
 function OutcomeRadar({ isActive }) {
   return (
     <motion.div
-      className="relative mx-auto h-[15rem] w-[15rem] sm:h-[18rem] sm:w-[18rem] lg:mx-0 lg:h-[22rem] lg:w-[22rem]"
+      className="relative mx-auto h-60 w-60 sm:h-72 sm:w-[18rem] lg:mx-0 lg:h-88 lg:w-88"
       aria-label="Outcome radar showing screen, attention, clarity, and action connecting to outcomes."
       initial={false}
       animate={
