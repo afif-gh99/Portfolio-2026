@@ -96,3 +96,30 @@ body::-webkit-scrollbar {
 .font-osiris {
   font-family: "Osiris", system-ui, sans-serif;
 }
+
+@keyframes skill-orbit-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.skill-orbit-rotation {
+  animation: skill-orbit-spin var(--orbit-duration, 60s) linear infinite;
+  animation-direction: var(--orbit-direction, normal);
+  opacity: var(--orbit-opacity, 1);
+  pointer-events: none;
+  transform-origin: center;
+  will-change: transform;
+}
+
+.skill-orbit-counter {
+  animation: skill-orbit-spin var(--orbit-duration, 60s) linear infinite;
+  animation-direction: var(--orbit-counter-direction, reverse);
+  transform-origin: center;
+  will-change: transform;
+}
+
+.skill-orbit-node-position {
+  transform: rotate(var(--node-angle)) translateX(var(--node-radius))
+    rotate(var(--node-angle-inverse));
+}

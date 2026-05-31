@@ -25,7 +25,7 @@ function AboutFeelingScene() {
   return (
     <AboutScene
       topLabel="SENSORY_LAYER / 01"
-      bottomLabel="MOTION / CLARITY / RHYTHM"
+      bottomLabel="EVERY DETAIL HAS A REASON"
     >
       <div className="pointer-events-none absolute left-1/2 top-1/2 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-300/10 blur-3xl" />
       <div className="relative">

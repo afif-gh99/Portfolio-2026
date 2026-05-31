@@ -5,6 +5,7 @@ import ScrollIndicator from "../components/layout/ScrollIndicator.jsx";
 import Hero from "../components/sections/Hero.jsx";
 import About from "../components/sections/About.jsx";
 import Experience from "../components/sections/Experience.jsx";
+import Skills from "../components/sections/Skills.jsx";
 import { registerSection } from "../lib/sectionNavigation.js";
 
 function Home() {
@@ -26,6 +27,7 @@ function Home() {
       <Hero canAnimateHero={canAnimateHero} />
       <About />
       <Experience />
+      <Skills />
     </main>
   );
 }

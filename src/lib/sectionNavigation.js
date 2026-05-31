@@ -2,13 +2,13 @@ export const sectionKeys = [
   "home",
   "about",
   "experience",
-  "projects",
   "skills",
+  "projects",
   "contact",
 ];
 
 const navbarOffset = 96;
-const activeSectionViewportRatio = 0.52;
+export const activeSectionViewportRatio = 0.52;
 const sectionRegistry = new Map();
 
 let smoothScroller = null;

@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import { motion, useScroll, useSpring, useTransform } from "framer-motion";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { navigationLinks } from "../../data/navigation.js";
 import {
+  activeSectionViewportRatio,
   getCurrentSectionKey,
   getSectionElement,
   scrollToSection,
@@ -16,9 +17,98 @@ function getAvailableSectionKeys() {
     .map((link) => link.sectionKey);
 }
 
+function getMarkerProgress(sectionKey) {
+  const sectionIndex = navigationLinks.findIndex(
+    (link) => link.sectionKey === sectionKey,
+  );
+
+  if (sectionIndex < 0 || navigationLinks.length <= 1) {
+    return 0;
+  }
+
+  return sectionIndex / (navigationLinks.length - 1);
+}
+
+function getSectionTriggerScrollY(sectionKey) {
+  if (sectionKey === "home") {
+    return 0;
+  }
+
+  const sectionElement = getSectionElement(sectionKey);
+
+  if (!sectionElement) {
+    return null;
+  }
+
+  return (
+    sectionElement.getBoundingClientRect().top +
+    window.scrollY -
+    window.innerHeight * activeSectionViewportRatio
+  );
+}
+
+function getSectionProgress(sectionKeys) {
+  if (typeof window === "undefined" || sectionKeys.length === 0) {
+    return 0;
+  }
+
+  const sectionPoints = sectionKeys
+    .map((sectionKey) => {
+      const triggerScrollY = getSectionTriggerScrollY(sectionKey);
+
+      if (triggerScrollY === null) {
+        return null;
+      }
+
+      return {
+        markerProgress: getMarkerProgress(sectionKey),
+        triggerScrollY,
+      };
+    })
+    .filter(Boolean)
+    .sort((firstPoint, secondPoint) => {
+      return firstPoint.triggerScrollY - secondPoint.triggerScrollY;
+    });
+
+  if (sectionPoints.length === 0) {
+    return 0;
+  }
+
+  const currentScrollY = window.scrollY;
+  const firstPoint = sectionPoints[0];
+  const lastPoint = sectionPoints[sectionPoints.length - 1];
+
+  if (currentScrollY <= firstPoint.triggerScrollY) {
+    return firstPoint.markerProgress;
+  }
+
+  if (currentScrollY >= lastPoint.triggerScrollY) {
+    return lastPoint.markerProgress;
+  }
+
+  const nextPointIndex = sectionPoints.findIndex((sectionPoint) => {
+    return currentScrollY <= sectionPoint.triggerScrollY;
+  });
+  const previousPoint = sectionPoints[nextPointIndex - 1];
+  const nextPoint = sectionPoints[nextPointIndex];
+  const scrollRange = nextPoint.triggerScrollY - previousPoint.triggerScrollY;
+
+  if (scrollRange <= 0) {
+    return nextPoint.markerProgress;
+  }
+
+  const segmentProgress =
+    (currentScrollY - previousPoint.triggerScrollY) / scrollRange;
+
+  return (
+    previousPoint.markerProgress +
+    (nextPoint.markerProgress - previousPoint.markerProgress) * segmentProgress
+  );
+}
+
 function ScrollIndicator() {
-  const { scrollYProgress } = useScroll();
-  const smoothProgress = useSpring(scrollYProgress, {
+  const sectionProgress = useMotionValue(0);
+  const smoothProgress = useSpring(sectionProgress, {
     stiffness: 140,
     damping: 30,
     mass: 0.25,
@@ -43,6 +133,9 @@ function ScrollIndicator() {
       animationFrameId = null;
       const nextActiveSectionKey = getCurrentSectionKey();
       const nextAvailableSectionKeys = getAvailableSectionKeys();
+      const nextSectionProgress = getSectionProgress(nextAvailableSectionKeys);
+
+      sectionProgress.set(nextSectionProgress);
 
       setActiveSectionKey((currentSectionKey) =>
         currentSectionKey === nextActiveSectionKey
@@ -79,7 +172,7 @@ function ScrollIndicator() {
       window.removeEventListener("scroll", queueIndicatorUpdate);
       window.removeEventListener("resize", queueIndicatorUpdate);
     };
-  }, []);
+  }, [sectionProgress]);
 
   return (
     <nav
@@ -89,7 +182,7 @@ function ScrollIndicator() {
       <div className="relative h-72 w-24">
         <span
           aria-hidden="true"
-          className="absolute left-1/2 top-0 h-px w-5 -translate-x-1/2 bg-gradient-to-r from-transparent via-cyan-100/38 to-transparent shadow-[0_0_10px_rgba(34,211,238,0.14)]"
+          className="absolute left-1/2 top-0 h-px w-5 -translate-x-1/2 bg-linear-to-r from-transparent via-cyan-100/38 to-transparent shadow-[0_0_10px_rgba(34,211,238,0.14)]"
         />
         <span
           aria-hidden="true"
@@ -97,7 +190,7 @@ function ScrollIndicator() {
         />
         <span
           aria-hidden="true"
-          className="absolute bottom-0 left-1/2 h-px w-5 -translate-x-1/2 bg-gradient-to-r from-transparent via-cyan-100/30 to-transparent shadow-[0_0_10px_rgba(34,211,238,0.1)]"
+          className="absolute bottom-0 left-1/2 h-px w-5 -translate-x-1/2 bg-linear-to-r from-transparent via-cyan-100/30 to-transparent shadow-[0_0_10px_rgba(34,211,238,0.1)]"
         />
         <span
           aria-hidden="true"
@@ -163,14 +256,14 @@ function ScrollIndicator() {
               />
               <span
                 aria-hidden="true"
-                className={`absolute right-[2.45rem] h-px w-5 bg-gradient-to-r from-cyan-100/45 to-transparent transition duration-300 ${
+                className={`absolute right-[2.45rem] h-px w-5 bg-linear-to-r from-cyan-100/45 to-transparent transition duration-300 ${
                   isActive
                     ? "opacity-55"
                     : "opacity-0 group-hover:opacity-55 group-focus-visible:opacity-55"
                 }`}
               />
               <span
-                className={`font-oxanium absolute right-[3.75rem] flex min-w-[4.5rem] items-center justify-center whitespace-nowrap rounded-md border border-cyan-100/18 bg-[#04101f]/82 px-2.5 py-1.5 text-[10px] font-medium uppercase leading-none text-cyan-50/86 shadow-[0_8px_22px_rgba(0,0,0,0.3),0_0_15px_rgba(34,211,238,0.08),inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-md transition duration-300 ${
+                className={`font-oxanium  absolute right-15 flex min-w-18 items-center justify-center whitespace-nowrap rounded-md border border-cyan-100/18 bg-[#04101f]/82 px-2.5 py-1.5 text-[10px] font-medium uppercase leading-none text-cyan-50/86 shadow-[0_8px_22px_rgba(0,0,0,0.3),0_0_15px_rgba(34,211,238,0.08),inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-md transition duration-300 ${
                   isActive
                     ? "translate-x-0 opacity-100 ring-1 ring-cyan-100/10"
                     : "translate-x-1 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 group-focus-visible:translate-x-0 group-focus-visible:opacity-100"

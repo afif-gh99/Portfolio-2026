@@ -34,7 +34,7 @@ function AboutDecisionScene() {
     <AboutScene
       className=" items-start py-18 sm:min-h-[80vh] sm:items-center sm:py-4 lg:min-h-[90vh]"
       topLabel="INTERFACE_LOGIC / 03"
-      bottomLabel="EVERY DETAIL HAS A REASON"
+      bottomLabel="MOTION / CLARITY / RHYTHM "
     >
       <div
         ref={sceneContentRef}

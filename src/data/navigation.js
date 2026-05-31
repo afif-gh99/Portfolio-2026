@@ -19,15 +19,15 @@ export const navigationLinks = [
   },
   {
     number: "04",
-    label: "Projects",
-    sectionKey: "projects",
-    description: "Selected interfaces, animations, and product-focused builds.",
-  },
-  {
-    number: "05",
     label: "Skills",
     sectionKey: "skills",
     description: "Technologies, tools, and development strengths.",
+  },
+  {
+    number: "05",
+    label: "Projects",
+    sectionKey: "projects",
+    description: "Selected interfaces, animations, and product-focused builds.",
   },
   {
     number: "06",

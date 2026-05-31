@@ -7,8 +7,8 @@ function ExperienceTimeline() {
   const timelineRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(null);
   const isTimelineInView = useInView(timelineRef, {
-    amount: 0.08,
-    margin: "-8% 0px -8% 0px",
+    amount: 0.12,
+    margin: "-10% 0px -8% 0px",
   });
   const activeEntry =
     activeIndex === null ? null : experienceTimeline[activeIndex];
@@ -56,8 +56,8 @@ function ExperienceTimeline() {
           <motion.span
             className="absolute h-28 w-28 rounded-full border border-cyan-100/10 bg-cyan-300/5 shadow-[0_0_40px_rgba(34,211,238,0.12)]"
             animate={{
-              opacity: [0.26, 0.42, 0.26],
-              scale: [0.94, 1.04, 0.94],
+              opacity: [0.26, 0.8, 0.26],
+              scale: [0.9, 1.4, 0.9],
             }}
             transition={{
               duration: 3.2,
@@ -68,7 +68,8 @@ function ExperienceTimeline() {
           <motion.span
             className="absolute h-12 w-12 rounded-full border border-cyan-100/28 bg-[#06101f]/70 shadow-[0_0_28px_rgba(34,211,238,0.2),inset_0_0_18px_rgba(34,211,238,0.05)]"
             animate={{
-              opacity: [0.62, 0.92, 0.62],
+              opacity: [0.58, 1, 0.58],
+              scale: [0.96, 1.04, 0.96],
             }}
             transition={{
               duration: 2.4,
@@ -76,7 +77,23 @@ function ExperienceTimeline() {
               repeat: Infinity,
             }}
           />
-          <span className="relative h-3 w-3 rounded-full bg-cyan-50 shadow-[0_0_12px_rgba(207,250,254,0.9),0_0_30px_rgba(34,211,238,0.38)]" />
+          <motion.span
+            className="relative h-3.5 w-3.5 rounded-full bg-cyan-50"
+            animate={{
+              opacity: [0.82, 1, 0.82],
+              scale: [0.94, 1.12, 0.94],
+              boxShadow: [
+                "0 0 12px rgba(207,250,254,0.86), 0 0 30px rgba(34,211,238,0.42)",
+                "0 0 20px rgba(207,250,254,1), 0 0 58px rgba(34,211,238,0.68), 0 0 92px rgba(14,165,233,0.28)",
+                "0 0 12px rgba(207,250,254,0.86), 0 0 30px rgba(34,211,238,0.42)",
+              ],
+            }}
+            transition={{
+              duration: 2.4,
+              ease: "easeInOut",
+              repeat: Infinity,
+            }}
+          />{" "}
           {activeEntry && (
             <AnimatePresence mode="wait">
               <motion.div
@@ -97,7 +114,7 @@ function ExperienceTimeline() {
                   }`}
                 />{" "}
                 <div
-                  className={`font-oxanium relative min-w-45 overflow-hidden border border-cyan-100/18 bg-[#04101f]/82 px-3.5 py-2.5 text-left text-[10px] font-medium uppercase leading-4 tracking-[0.18em] text-cyan-100/72 shadow-[0_10px_28px_rgba(0,0,0,0.28),0_0_16px_rgba(34,211,238,0.07)] backdrop-blur-md ${
+                  className={`font-oxanium relative min-w-50 overflow-hidden border border-cyan-100/18 bg-[#04101f]/82 px-3.5 py-4.5 text-left text-[20px] font-medium uppercase leading-4 tracking-[0.18em] text-cyan-100/72 shadow-[0_10px_28px_rgba(0,0,0,0.28),0_0_16px_rgba(34,211,238,0.07)] backdrop-blur-md ${
                     activeEntry.side === "left" ? "ml-9" : "mr-9"
                   }`}
                   style={{
@@ -109,21 +126,21 @@ function ExperienceTimeline() {
                 >
                   {activeEntry.side === "left" ? (
                     <>
-                      <span className="absolute bottom-0 right-[16px] h-px w-4 bg-cyan-100/30" />
-                      <span className="absolute bottom-[16px] right-0 h-4 w-px bg-cyan-100/24" />
-                      <span className="absolute bottom-[7px] right-[-3px] h-px w-6 rotate-[-45deg] bg-cyan-100/36" />
+                      <span className="absolute bottom-0 right-4 h-px w-4 bg-cyan-100/30" />
+                      <span className="absolute bottom-4 right-0 h-4 w-px bg-cyan-100/24" />
+                      <span className="absolute bottom-1.75 -right-0.75 h-px w-6 -rotate-45 bg-cyan-100/36" />
                     </>
                   ) : (
                     <>
-                      <span className="absolute bottom-0 left-[16px] h-px w-4 bg-cyan-100/30" />
-                      <span className="absolute bottom-[16px] left-0 h-4 w-px bg-cyan-100/24" />
-                      <span className="absolute bottom-[7px] left-[-3px] h-px w-6 rotate-[45deg] bg-cyan-100/36" />
+                      <span className="absolute bottom-0 left-4 w-4 bg-cyan-100/30" />
+                      <span className="absolute bottom-4 left-0 h-4 w-px bg-cyan-100/24" />
+                      <span className="absolute bottom-1.75 -left-0.75 h-px w-6 rotate-45 bg-cyan-100/36" />
                     </>
                   )}{" "}
-                  <span className="block text-[0.82rem] font-semibold leading-4 tracking-[0.22em] text-cyan-50/90">
+                  <span className="block text-[1.1rem] font-semibold leading-4 tracking-[0.22em] text-cyan-50/90">
                     {activeEntry.context}
                   </span>
-                  <span className="font-osiris mt-1.5 block text-[10px] leading-3 tracking-[0.2em] text-cyan-100/48">
+                  <span className="font-osiris mt-1.5 block text-[12px] leading-3 tracking-[0.2em] text-cyan-100/48">
                     {activeEntry.year}
                   </span>
                 </div>

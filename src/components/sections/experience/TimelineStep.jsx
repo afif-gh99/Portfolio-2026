@@ -111,9 +111,9 @@ function TimelineStep({ entry, index, isActive, onActive }) {
   return (
     <section
       ref={stepRef}
-      className="relative min-h-[60dvh] overflow-hidden px-5 py-4 sm:px-8 lg:min-h-[60dvh] lg:py-0"
+      className="relative min-h-[60dvh] overflow-hidden px-5 py-16 sm:px-8 lg:min-h-[60dvh] lg:px-16 lg:py-0 xl:px-24 2xl:px-32"
     >
-      <div className="mx-auto grid min-h-[60dvh] w-full max-w-7xl items-center lg:min-h-[60dvh] lg:max-w-[92rem] lg:grid-cols-[minmax(0,1fr)_8rem_minmax(0,1fr)] lg:gap-10 xl:gap-12">
+      <div className="mx-auto grid min-h-[60dvh] w-full max-w-7xl items-center lg:min-h-[60dvh] lg:max-w-368 lg:grid-cols-[minmax(0,1fr)_8rem_minmax(0,1fr)] lg:gap-10 xl:gap-12">
         <div className="relative lg:hidden">
           <div
             aria-hidden="true"
@@ -146,7 +146,7 @@ function TimelineStep({ entry, index, isActive, onActive }) {
           </motion.article>
         </div>
         <motion.article
-          className={`hidden w-full max-w-[38rem] text-left lg:block ${
+          className={`hidden w-full max-w-152 text-left lg:block ${
             isLeft
               ? "col-start-1 justify-self-start"
               : "col-start-3 justify-self-end"
