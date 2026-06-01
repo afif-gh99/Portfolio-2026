@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="A.GH favicon">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#020c1c"/>
+      <stop offset="0.55" stop-color="#031225"/>
+      <stop offset="1" stop-color="#020817"/>
+    </linearGradient>
+    <filter id="softGlow" x="-35%" y="-35%" width="170%" height="170%">
+      <feDropShadow dx="0" dy="0" stdDeviation="5" flood-color="#67e8f9" flood-opacity="0.18"/>
+      <feDropShadow dx="0" dy="0" stdDeviation="12" flood-color="#38bdf8" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+  <rect width="512" height="512" rx="84" fill="url(#bg)"/>
+  <rect x="1" y="1" width="510" height="510" rx="83" fill="none" stroke="#123753" stroke-opacity="0.42" stroke-width="2"/>
+
+  <g transform="translate(37 194)" fill="none" stroke="#edf6ff" stroke-width="23" stroke-linecap="round" stroke-linejoin="round" filter="url(#softGlow)">
+    <!-- A -->
+    <path d="M0 112 V25 Q0 0 25 0 H70 Q95 0 95 25 V112"/>
+    <path d="M13 64 H82"/>
+
+    <!-- dot -->
+    <circle cx="125" cy="112" r="12" fill="#edf6ff" stroke="none"/>
+
+    <!-- G -->
+    <path d="M176 0 H244 Q270 0 270 26"/>
+    <path d="M176 0 Q150 0 150 26 V86 Q150 112 176 112 H244 Q270 112 270 86 V73"/>
+    <path d="M229 64 H270"/>
+
+    <!-- H -->
+    <path d="M314 0 V112"/>
+    <path d="M400 0 V112"/>
+    <path d="M314 62 H400"/>
+  </g>
+</svg>
