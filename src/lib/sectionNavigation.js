@@ -39,24 +39,35 @@ export function getSectionElement(sectionKey) {
     return null;
   }
 
-  return (
-    sectionRegistry.get(sectionKey) ||
-    document.querySelector(`[data-section="${sectionKey}"]`)
-  );
+  const registeredElement = sectionRegistry.get(sectionKey);
+
+  if (registeredElement?.isConnected) {
+    return registeredElement;
+  }
+
+  if (registeredElement) {
+    sectionRegistry.delete(sectionKey);
+  }
+
+  return document.querySelector(`[data-section="${sectionKey}"]`);
 }
 
-export function scrollToSection(sectionKey) {
+export function scrollToSection(sectionKey, options = {}) {
   const sectionElement = getSectionElement(sectionKey);
+  const behavior = options.behavior || "smooth";
+  const shouldScrollImmediately = behavior === "auto" || options.immediate;
 
   if (!sectionElement) {
-    return;
+    return false;
   }
 
   if (smoothScroller?.scrollTo) {
     smoothScroller.scrollTo(sectionElement, {
       offset: -navbarOffset,
+      immediate: shouldScrollImmediately,
+      force: shouldScrollImmediately,
     });
-    return;
+    return true;
   }
 
   window.scrollTo({
@@ -64,8 +75,10 @@ export function scrollToSection(sectionKey) {
       sectionElement.getBoundingClientRect().top +
       window.scrollY -
       navbarOffset,
-    behavior: "smooth",
+    behavior,
   });
+
+  return true;
 }
 
 export function getCurrentSectionKey() {

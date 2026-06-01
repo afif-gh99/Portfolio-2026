@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { useLocation, useNavigate, useOutletContext } from "react-router-dom";
 import { navigationLinks } from "../../data/navigation.js";
 import {
   getCurrentSectionKey,
@@ -31,10 +32,18 @@ function Navbar() {
   const [activeItem, setActiveItem] = useState(navigationLinks[0]);
   const [isNavbarHidden, setIsNavbarHidden] = useState(false);
   const [isSoundMuted, setIsSoundMuted] = useState(() => getIsSoundMuted());
+  const location = useLocation();
+  const navigate = useNavigate();
+  const {
+    isPageTransitioning = false,
+    startProjectsArchiveTransition,
+    startHomeSectionTransition,
+  } = useOutletContext() ?? {};
   const activeDigit = activeItem.number.slice(-1);
 
   const openMenu = () => {
-    const currentSectionKey = getCurrentSectionKey();
+    const currentSectionKey =
+      location.pathname === "/projects" ? "projects" : getCurrentSectionKey();
     const currentNavigationItem =
       navigationLinks.find((link) => link.sectionKey === currentSectionKey) ||
       navigationLinks[0];
@@ -49,12 +58,44 @@ function Navbar() {
 
   const handleSectionClick = (sectionKey) => {
     closeMenu();
+
+    if (location.pathname === "/projects" && startHomeSectionTransition) {
+      startHomeSectionTransition(sectionKey);
+      return;
+    }
+
+    if (location.pathname !== "/") {
+      navigate("/", { state: { scrollToSection: sectionKey } });
+      return;
+    }
+
     requestAnimationFrame(() => {
       scrollToSection(sectionKey);
     });
   };
 
+  const handleArchiveClick = () => {
+    if (location.pathname === "/projects" || !startProjectsArchiveTransition) {
+      return;
+    }
+
+    closeMenu();
+    window.requestAnimationFrame(() => {
+      startProjectsArchiveTransition();
+    });
+  };
+
   const handleBrandClick = () => {
+    if (location.pathname === "/projects" && startHomeSectionTransition) {
+      startHomeSectionTransition("home");
+      return;
+    }
+
+    if (location.pathname !== "/") {
+      navigate("/", { state: { scrollToSection: "home" } });
+      return;
+    }
+
     scrollToSection("home");
   };
 
@@ -145,6 +186,7 @@ function Navbar() {
         <button
           type="button"
           onClick={handleBrandClick}
+          disabled={isPageTransitioning}
           className="font-audiowide border-0 bg-transparent p-0 text-[14px] text-slate-100 drop-shadow-[0_0_18px_rgba(34,211,238,0.2)] outline-none transition-colors duration-300 hover:text-cyan-100 focus-visible:text-cyan-100 focus-visible:ring-2 focus-visible:ring-cyan-200/45 focus-visible:ring-offset-4 focus-visible:ring-offset-[#020817] sm:text-[26px]"
         >
           AFIF.GH
@@ -170,6 +212,7 @@ function Navbar() {
             data-sound="click"
             data-sound-hover="hover"
             onClick={openMenu}
+            disabled={isPageTransitioning}
             className="group flex min-h-11 items-center gap-3 rounded-[18px] border border-cyan-200/18 bg-[#06101f]/44 px-4 text-slate-100 shadow-[0_12px_44px_rgba(0,0,0,0.28),0_0_24px_rgba(34,211,238,0.08)] outline-none backdrop-blur-md transition duration-300 hover:border-cyan-200/55 hover:bg-cyan-100/9 hover:shadow-[0_14px_50px_rgba(0,0,0,0.32),0_0_30px_rgba(34,211,238,0.2)] focus-visible:ring-2 focus-visible:ring-cyan-200/55 focus-visible:ring-offset-2 focus-visible:ring-offset-[#020817]"
           >
             <span className="font-bruno text-[11px] leading-none text-slate-200 transition-colors duration-300 group-hover:text-cyan-100">
@@ -191,6 +234,9 @@ function Navbar() {
         setActiveItem={setActiveItem}
         activeDigit={activeDigit}
         handleSectionClick={handleSectionClick}
+        handleArchiveClick={handleArchiveClick}
+        isArchiveOpen={location.pathname === "/projects"}
+        isPageTransitioning={isPageTransitioning}
       />
     </header>
   );

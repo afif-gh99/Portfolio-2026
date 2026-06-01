@@ -23,6 +23,9 @@ function MenuOverlay({
   setActiveItem,
   activeDigit,
   handleSectionClick,
+  handleArchiveClick,
+  isArchiveOpen,
+  isPageTransitioning,
 }) {
   return (
     <AnimatePresence>
@@ -56,7 +59,13 @@ function MenuOverlay({
                 setActiveItem={setActiveItem}
                 handleSectionClick={handleSectionClick}
               />
-              <MenuPreview activeItem={activeItem} activeDigit={activeDigit} />
+              <MenuPreview
+                activeItem={activeItem}
+                activeDigit={activeDigit}
+                handleArchiveClick={handleArchiveClick}
+                isArchiveOpen={isArchiveOpen}
+                isPageTransitioning={isPageTransitioning}
+              />
             </div>
           </div>
         </motion.div>

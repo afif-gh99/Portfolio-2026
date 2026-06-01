@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import './index.css'
 import Root from './pages/Root.jsx'
 import Home from './pages/Home.jsx'
+import ProjectsArchive from './pages/ProjectsArchive.jsx'
 import ProjectDetails from './pages/ProjectDetails.jsx'
 import NotFound from './pages/NotFound.jsx'
 
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Home />,
+      },
+      {
+        path: 'projects',
+        element: <ProjectsArchive />,
       },
       {
         path: 'projects/:slug',

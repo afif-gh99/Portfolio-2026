@@ -37,7 +37,17 @@ const previewMotion = {
   },
 };
 
-function MenuPreview({ activeItem, activeDigit }) {
+function MenuPreview({
+  activeItem,
+  activeDigit,
+  handleArchiveClick,
+  isArchiveOpen = false,
+  isPageTransitioning = false,
+}) {
+  const shouldShowArchiveCta = activeItem.sectionKey === "projects";
+  const isArchiveCtaDisabled =
+    isArchiveOpen || isPageTransitioning || !handleArchiveClick;
+
   return (
     <motion.aside
       className="relative hidden h-160 overflow-hidden rounded-[28px] border border-cyan-100/12 bg-[#06101f]/58 p-8 shadow-[0_30px_120px_rgba(0,0,0,0.45),0_0_55px_rgba(34,211,238,0.12),inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-xl lg:flex lg:flex-col lg:justify-end"
@@ -99,6 +109,25 @@ function MenuPreview({ activeItem, activeDigit }) {
           >
             {activeItem.description}
           </motion.p>
+          {shouldShowArchiveCta ? (
+            <motion.button
+              type="button"
+              aria-label={
+                isArchiveOpen
+                  ? "Projects archive is already open"
+                  : "Open projects archive"
+              }
+              data-cursor={isArchiveCtaDisabled ? undefined : "interactive"}
+              data-sound={isArchiveCtaDisabled ? undefined : "click"}
+              data-sound-hover={isArchiveCtaDisabled ? undefined : "hover"}
+              disabled={isArchiveCtaDisabled}
+              onClick={handleArchiveClick}
+              className="mt-8 inline-flex min-h-11 items-center gap-3 border border-cyan-200/24 bg-cyan-100/[0.035] px-4 py-3 font-bruno text-[10px] uppercase tracking-[0.18em] text-cyan-100/88 outline-none transition duration-300 before:h-px before:w-7 before:bg-cyan-200/70 before:shadow-[0_0_14px_rgba(34,211,238,0.45)] hover:border-cyan-200/55 hover:bg-cyan-100/[0.075] hover:text-cyan-50 hover:shadow-[0_0_28px_rgba(34,211,238,0.12)] focus-visible:ring-2 focus-visible:ring-cyan-200/55 focus-visible:ring-offset-2 focus-visible:ring-offset-[#06101f] disabled:cursor-not-allowed disabled:border-cyan-100/12 disabled:bg-slate-100/[0.025] disabled:text-slate-400/60 disabled:shadow-none disabled:before:bg-slate-400/35"
+              {...previewMotion.description}
+            >
+              {isArchiveOpen ? "ARCHIVE OPEN" : "OPEN ARCHIVE"}
+            </motion.button>
+          ) : null}
         </motion.div>
       </AnimatePresence>
     </motion.aside>
