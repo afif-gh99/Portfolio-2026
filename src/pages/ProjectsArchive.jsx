@@ -30,23 +30,6 @@ const copyVariants = {
   },
 };
 
-const headlineVariants = {
-  hidden: {
-    opacity: 0,
-    x: -44,
-    filter: "blur(6px)",
-  },
-  visible: {
-    opacity: 1,
-    x: 0,
-    filter: "blur(0px)",
-    transition: {
-      duration: 0.96,
-      delay: 0.14,
-      ease: [0.16, 1, 0.3, 1],
-    },
-  },
-};
 const archiveHeaderVariants = {
   hidden: {},
   visible: {
@@ -154,7 +137,7 @@ function ProjectsArchive() {
               className="h-px w-10 bg-linear-to-r from-cyan-100/36 to-transparent"
             />
             <p className="font-osiris text-xs uppercase tracking-[0.34em] text-cyan-100/66 sm:text-sm">
-              06 / ARCHIVE
+              05 / Projects / ARCHIVE
             </p>
           </motion.div>
           <motion.h1
@@ -166,7 +149,7 @@ function ProjectsArchive() {
             PROJECT ARCHIVE FROM EARLY BUILDS TO SHIPPED INTERFACES.
           </motion.h1>
           <motion.p
-            className="font-oxanium mt-8 max-w-144 border-l border-cyan-100/16 pl-4 text-sm leading-7 text-slate-200/74 sm:mt-9 sm:text-base sm:leading-8 lg:mt-10"
+            className="font-oxanium mt-8 max-w-xl border-l border-cyan-100/16 pl-4 text-sm leading-7 text-slate-200/74 sm:mt-9 sm:text-base sm:leading-8 lg:mt-10"
             data-cursor="text"
             variants={archiveHeaderItemVariants}
           >
@@ -256,7 +239,7 @@ function ProjectsArchive() {
               data-sound-hover={isBackHomeDisabled ? undefined : "hover"}
               disabled={isBackHomeDisabled}
               onClick={handleBackHomeClick}
-              className="group relative inline-flex min-h-12 items-center gap-4 border border-cyan-200/26 bg-cyan-100/[0.035] px-5 py-3 font-bruno text-[10px] uppercase tracking-[0.2em] text-cyan-100/90 outline-none transition duration-300 before:h-px before:w-9 before:bg-cyan-200/70 before:shadow-[0_0_16px_rgba(34,211,238,0.5)] hover:border-cyan-200/58 hover:bg-cyan-100/[0.075] hover:text-cyan-50 hover:shadow-[0_0_32px_rgba(34,211,238,0.14)] focus-visible:ring-2 focus-visible:ring-cyan-200/55 focus-visible:ring-offset-2 focus-visible:ring-offset-[#06101f] disabled:cursor-not-allowed disabled:border-cyan-100/12 disabled:bg-slate-100/[0.025] disabled:text-slate-400/60 disabled:shadow-none disabled:before:bg-slate-400/35 sm:px-6"
+              className="group relative inline-flex min-h-12 items-center gap-4 border border-cyan-200/26 bg-cyan-100/[0.035] px-5 py-3 font-bruno text-[10px] uppercase tracking-[0.2em] text-cyan-100/90 outline-none transition duration-300 before:h-px before:w-9 before:bg-cyan-200/70 before:shadow-[0_0_16px_rgba(34,211,238,0.5)] hover:border-cyan-200/58 hover:bg-cyan-100/7.5 hover:text-cyan-50 hover:shadow-[0_0_32px_rgba(34,211,238,0.14)] focus-visible:ring-2 focus-visible:ring-cyan-200/55 focus-visible:ring-offset-2 focus-visible:ring-offset-[#06101f] disabled:cursor-not-allowed disabled:border-cyan-100/12 disabled:bg-slate-100/2.5 disabled:text-slate-400/60 disabled:shadow-none disabled:before:bg-slate-400/35 sm:px-6"
             >
               BACK TO HOME
               <span
