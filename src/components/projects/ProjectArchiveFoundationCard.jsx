@@ -34,11 +34,11 @@ function ProjectArchiveFoundationCard({ project, index = 0 }) {
         className="absolute bottom-0 right-0 h-6 w-6 border-b border-r border-cyan-100/18"
       />
 
-      <div className="relative aspect-[16/10] overflow-hidden rounded-[6px] border border-cyan-100/13 bg-[#020817]/72 p-2">
-        <div className="h-full w-full overflow-hidden rounded-[8px] bg-[#010712]/70 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.035)]">
+      <div className="relative aspect-16/10 overflow-hidden rounded-md border border-cyan-100/13 bg-[#020817]/72 p-2">
+        <div className="h-full w-full overflow-hidden rounded-lg bg-[#010712]/70 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.035)]">
           <img
             alt={`${project.title} project screenshot`}
-            className="h-full w-fit h-fit object-contain object-center"
+            className="h-full w-full object-contain object-center"
             draggable="false"
             loading="lazy"
             src={project.image}
@@ -82,7 +82,7 @@ function ProjectArchiveFoundationCard({ project, index = 0 }) {
           data-cursor="interactive"
           data-sound-hover="hover"
           href={project.projectUrl}
-          rel="noreferrer"
+          rel="noopener noreferrer"
           target="_blank"
         >
           VISIT PROJECT

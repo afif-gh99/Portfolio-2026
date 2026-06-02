@@ -76,7 +76,7 @@ function HeroContent({
         <a
           href="https://linkedin.com/in/afif-ghaziri2004"
           target="_blank"
-          rel="noreferrer"
+          rel="noopener noreferrer"
           data-sound="click"
           data-sound-hover="hover"
           className="font-oxanium inline-flex min-h-12 items-center justify-center gap-2.5 border border-cyan-200/55 bg-cyan-100/10 px-4 text-xs font-semibold uppercase tracking-[0.22em] text-cyan-50 shadow-[0_0_28px_rgba(34,211,238,0.13)] outline-none transition duration-300 hover:border-cyan-100 hover:bg-cyan-100/16 hover:shadow-[0_0_34px_rgba(34,211,238,0.24)] focus-visible:ring-2 focus-visible:ring-cyan-200/60 focus-visible:ring-offset-4 focus-visible:ring-offset-[#04162c]"

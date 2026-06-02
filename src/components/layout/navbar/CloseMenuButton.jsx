@@ -1,8 +1,9 @@
 import { motion } from "framer-motion";
 
-function CloseMenuButton({ closeMenu }) {
+function CloseMenuButton({ buttonRef, closeMenu }) {
   return (
     <motion.button
+      ref={buttonRef}
       type="button"
       aria-label="Close navigation menu"
       data-sound="click"

@@ -128,10 +128,7 @@ function ProjectsArchive() {
           animate={archiveHeaderAnimationState}
           variants={archiveHeaderVariants}
         >
-          <motion.div
-            className="mb-6 flex items-center gap-4 lg:mb-7"
-            className="mb-6 flex items-center gap-4 lg:mb-7"
-          >
+          <motion.div className="mb-6 flex items-center gap-4 lg:mb-7">
             <span
               aria-hidden="true"
               className="h-px w-10 bg-linear-to-r from-cyan-100/36 to-transparent"

@@ -122,7 +122,7 @@ function MenuPreview({
               data-sound-hover={isArchiveCtaDisabled ? undefined : "hover"}
               disabled={isArchiveCtaDisabled}
               onClick={handleArchiveClick}
-              className="mt-8 inline-flex min-h-11 items-center gap-3 border border-cyan-200/24 bg-cyan-100/[0.035] px-4 py-3 font-bruno text-[10px] uppercase tracking-[0.18em] text-cyan-100/88 outline-none transition duration-300 before:h-px before:w-7 before:bg-cyan-200/70 before:shadow-[0_0_14px_rgba(34,211,238,0.45)] hover:border-cyan-200/55 hover:bg-cyan-100/[0.075] hover:text-cyan-50 hover:shadow-[0_0_28px_rgba(34,211,238,0.12)] focus-visible:ring-2 focus-visible:ring-cyan-200/55 focus-visible:ring-offset-2 focus-visible:ring-offset-[#06101f] disabled:cursor-not-allowed disabled:border-cyan-100/12 disabled:bg-slate-100/[0.025] disabled:text-slate-400/60 disabled:shadow-none disabled:before:bg-slate-400/35"
+              className="mt-8 inline-flex min-h-11 items-center gap-3 border border-cyan-200/24 bg-cyan-100/[0.035] px-4 py-3 font-bruno text-[10px] uppercase tracking-[0.18em] text-cyan-100/88 outline-none transition duration-300 before:h-px before:w-7 before:bg-cyan-200/70 before:shadow-[0_0_14px_rgba(34,211,238,0.45)] hover:border-cyan-200/55 hover:bg-cyan-100/7.5 hover:text-cyan-50 hover:shadow-[0_0_28px_rgba(34,211,238,0.12)] focus-visible:ring-2 focus-visible:ring-cyan-200/55 focus-visible:ring-offset-2 focus-visible:ring-offset-[#06101f] disabled:cursor-not-allowed disabled:border-cyan-100/12 disabled:bg-slate-100/2.5 disabled:text-slate-400/60 disabled:shadow-none disabled:before:bg-slate-400/35"
               {...previewMotion.description}
             >
               {isArchiveOpen ? "ARCHIVE OPEN" : "OPEN ARCHIVE"}

@@ -134,7 +134,7 @@ function ProjectCard({ project, variant = "small", index = 0 }) {
           data-cursor="interactive"
           data-sound-hover="hover"
           href={project.projectUrl}
-          rel="noreferrer"
+          rel="noopener noreferrer"
           target="_blank"
         >
           VISIT PROJECT
@@ -181,11 +181,11 @@ function ProjectCard({ project, variant = "small", index = 0 }) {
       >
         <img
           alt={`${project.title} project screenshot`}
-          className="relative z-0 h-fit w-fit object-contain object-center "
+          className="relative z-0 h-full w-full object-contain object-center"
           draggable="false"
           loading="lazy"
           src={project.image}
-        />
+        />{" "}
         <span
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 z-20 shadow-[inset_0_0_38px_rgba(2,8,23,0.42),inset_0_0_0_1px_rgba(34,211,238,0.08)]"

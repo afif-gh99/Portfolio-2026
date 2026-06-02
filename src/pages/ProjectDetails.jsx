@@ -1,5 +1,7 @@
+import { Navigate } from "react-router-dom";
+
 function ProjectDetails() {
-  return <main className="min-h-screen" />
+  return <Navigate replace to="/projects" />;
 }
 
-export default ProjectDetails
+export default ProjectDetails;

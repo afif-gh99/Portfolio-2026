@@ -113,7 +113,7 @@ function ProjectArchiveFeaturedCard({ project, index = 0 }) {
             data-cursor="interactive"
             data-sound-hover="hover"
             href={project.projectUrl}
-            rel="noreferrer"
+            rel="noopener noreferrer"
             target="_blank"
           >
             VISIT PROJECT
@@ -122,7 +122,7 @@ function ProjectArchiveFeaturedCard({ project, index = 0 }) {
       </div>
 
       <motion.div
-        className={`relative z-10 order-first mt-7 aspect-[1672/941] overflow-hidden rounded-[7px] border border-cyan-100/16 bg-[#020817]/74 p-3 shadow-[0_18px_42px_rgba(0,0,0,0.26),inset_0_1px_0_rgba(255,255,255,0.05)] sm:p-4 lg:mt-0 lg:p-5 ${
+        className={`relative z-10 order-first mt-7 aspect-1672/941 overflow-hidden rounded-[7px] border border-cyan-100/16 bg-[#020817]/74 p-3 shadow-[0_18px_42px_rgba(0,0,0,0.26),inset_0_1px_0_rgba(255,255,255,0.05)] sm:p-4 lg:mt-0 lg:p-5 ${
           isReversed ? "lg:order-first" : "lg:order-last"
         }`}
         custom={direction}

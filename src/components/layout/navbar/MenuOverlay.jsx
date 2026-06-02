@@ -1,7 +1,22 @@
+import { useEffect, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import CloseMenuButton from "./CloseMenuButton.jsx";
 import MenuLinks from "./MenuLinks.jsx";
 import MenuPreview from "./MenuPreview.jsx";
+
+const focusableSelector = [
+  "a[href]",
+  "area[href]",
+  "button:not([disabled])",
+  "input:not([disabled]):not([type='hidden'])",
+  "select:not([disabled])",
+  "textarea:not([disabled])",
+  "iframe",
+  "object",
+  "embed",
+  "[contenteditable='true']",
+  "[tabindex]:not([tabindex='-1'])",
+].join(",");
 
 const overlayVariants = {
   hidden: { opacity: 0 },
@@ -27,14 +42,97 @@ function MenuOverlay({
   isArchiveOpen,
   isPageTransitioning,
 }) {
+  const menuRef = useRef(null);
+  const closeButtonRef = useRef(null);
+
+  useEffect(() => {
+    const menuElement = menuRef.current;
+
+    if (!isMenuOpen || !menuElement) {
+      return undefined;
+    }
+
+    const getFocusableElements = () =>
+      Array.from(menuElement.querySelectorAll(focusableSelector)).filter(
+        (element) =>
+          !element.hasAttribute("disabled") &&
+          element.getAttribute("aria-hidden") !== "true" &&
+          element.getClientRects().length > 0,
+      );
+
+    const focusInitialElement = () => {
+      const firstFocusableElement = getFocusableElements()[0];
+
+      if (closeButtonRef.current) {
+        closeButtonRef.current.focus();
+        return;
+      }
+
+      if (firstFocusableElement) {
+        firstFocusableElement.focus();
+        return;
+      }
+
+      menuElement.focus();
+    };
+
+    const handleKeyDown = (event) => {
+      if (event.key !== "Tab") {
+        return;
+      }
+
+      const focusableElements = getFocusableElements();
+      const firstFocusableElement = focusableElements[0];
+      const lastFocusableElement =
+        focusableElements[focusableElements.length - 1];
+
+      if (!firstFocusableElement || !lastFocusableElement) {
+        event.preventDefault();
+        menuElement.focus();
+        return;
+      }
+
+      if (!menuElement.contains(document.activeElement)) {
+        event.preventDefault();
+        if (event.shiftKey) {
+          lastFocusableElement.focus();
+          return;
+        }
+
+        firstFocusableElement.focus();
+        return;
+      }
+
+      if (event.shiftKey && document.activeElement === firstFocusableElement) {
+        event.preventDefault();
+        lastFocusableElement.focus();
+        return;
+      }
+
+      if (!event.shiftKey && document.activeElement === lastFocusableElement) {
+        event.preventDefault();
+        firstFocusableElement.focus();
+      }
+    };
+
+    requestAnimationFrame(focusInitialElement);
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isMenuOpen]);
+
   return (
     <AnimatePresence>
       {isMenuOpen && (
         <motion.div
+          ref={menuRef}
           id="site-menu"
           role="dialog"
           aria-modal="true"
           aria-label="Site navigation"
+          tabIndex={-1}
           className="fixed inset-0 z-60 overflow-hidden bg-[#020817]/78 backdrop-blur-[6px]"
           variants={overlayVariants}
           initial="hidden"
@@ -49,10 +147,13 @@ function MenuOverlay({
 
           <div className="relative flex min-h-dvh flex-col px-5 py-5 sm:px-8 sm:py-7">
             <div className="flex items-center justify-end">
-              <CloseMenuButton closeMenu={closeMenu} />
+              <CloseMenuButton
+                buttonRef={closeButtonRef}
+                closeMenu={closeMenu}
+              />
             </div>
 
-            <div className="grid flex-1 items-top gap-10 py-14 lg:grid-cols-[minmax(0,0.9fr)_minmax(360px,1.1fr)] lg:gap-14 lg:pt-6">
+            <div className="grid flex-1 items-center gap-10 py-14 lg:grid-cols-[minmax(0,0.9fr)_minmax(360px,1.1fr)] lg:gap-14 lg:pt-6">
               <MenuLinks
                 navigationLinks={navigationLinks}
                 activeItem={activeItem}

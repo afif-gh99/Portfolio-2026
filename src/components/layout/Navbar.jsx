@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { useLocation, useNavigate, useOutletContext } from "react-router-dom";
 import { navigationLinks } from "../../data/navigation.js";
@@ -32,6 +32,8 @@ function Navbar() {
   const [activeItem, setActiveItem] = useState(navigationLinks[0]);
   const [isNavbarHidden, setIsNavbarHidden] = useState(false);
   const [isSoundMuted, setIsSoundMuted] = useState(() => getIsSoundMuted());
+  const menuButtonRef = useRef(null);
+  const wasMenuOpenRef = useRef(false);
   const location = useLocation();
   const navigate = useNavigate();
   const {
@@ -138,6 +140,25 @@ function Navbar() {
   }, [isMenuOpen]);
 
   useEffect(() => {
+    if (isMenuOpen) {
+      wasMenuOpenRef.current = true;
+      return;
+    }
+
+    if (!wasMenuOpenRef.current) {
+      return;
+    }
+
+    wasMenuOpenRef.current = false;
+
+    requestAnimationFrame(() => {
+      if (!menuButtonRef.current?.disabled) {
+        menuButtonRef.current?.focus();
+      }
+    });
+  }, [isMenuOpen]);
+
+  useEffect(() => {
     let previousScrollY = window.scrollY;
     const scrollThreshold = 10;
     const topOffset = 24;
@@ -205,6 +226,7 @@ function Navbar() {
           </button>
 
           <button
+            ref={menuButtonRef}
             type="button"
             aria-controls="site-menu"
             aria-expanded={isMenuOpen}

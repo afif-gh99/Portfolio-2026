@@ -94,7 +94,7 @@ function DecisionVisual({ type, isAnimated, isCompact = false }) {
       <span className="absolute left-0 top-1/2 h-px w-full -translate-y-1/2 bg-linear-to-r from-transparent via-cyan-100/30 to-transparent" />
       <span className="absolute left-1/2 top-1/2 h-6 w-6 -translate-x-1/2 -translate-y-1/2 border border-cyan-100/12" />
       <motion.span
-        className="absolute inset-2 border border-cyan-100/24 shadow-[0_0_18px_rgba(34,300,238,0.5)] transition-colors duration-300 group-hover:border-cyan-100/42"
+        className="absolute inset-2 border border-cyan-100/24 shadow-[0_0_18px_rgba(34,211,238,0.5)] transition-colors duration-300 group-hover:border-cyan-100/42"
         animate={
           isAnimated
             ? { opacity: [0.22, 0.66, 0.22], scale: [0.9, 1.5, 0.9] }

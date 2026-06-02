@@ -49,6 +49,7 @@ function Root() {
   const [canAnimateHero, setCanAnimateHero] = useState(false);
   const [pageTransitionPhase, setPageTransitionPhase] = useState("idle");
   const [projectsArchiveFocusKey, setProjectsArchiveFocusKey] = useState(0);
+
   const isPageTransitioningRef = useRef(false);
   const isOpeningTransitionRef = useRef(false);
   const shouldFocusArchiveRef = useRef(false);
@@ -56,6 +57,7 @@ function Root() {
   const closeTimeoutRef = useRef(null);
   const openTimeoutRef = useRef(null);
   const homeSectionTimeoutRef = useRef(null);
+
   const navigate = useNavigate();
   const location = useLocation();
   const backgroundAudioRef = useBackgroundAudio();
@@ -213,6 +215,16 @@ function Root() {
     [location.pathname, startPageTransition],
   );
 
+  const startRouteTransition = useCallback(
+    (pathname = "/") => {
+      startPageTransition({
+        pathname,
+        resetScrollTop: true,
+      });
+    },
+    [startPageTransition],
+  );
+
   const completeHomeSectionTransition = useCallback(() => {
     if (!isWaitingForHomeSectionRef.current) {
       return;
@@ -231,6 +243,7 @@ function Root() {
       <Outlet
         context={{
           canAnimateHero,
+          startRouteTransition,
           isPageTransitioning: pageTransitionPhase !== "idle",
           isProjectsArchiveTransitionOpening:
             pageTransitionPhase === "opening" &&
