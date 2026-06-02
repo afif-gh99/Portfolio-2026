@@ -51,8 +51,8 @@ function ProjectArchiveFeaturedCard({ project, index = 0 }) {
       ref={cardRef}
       className={`group relative grid overflow-hidden border border-cyan-100/15 bg-[#061426]/56 p-4 shadow-[0_24px_76px_rgba(0,0,0,0.34),0_0_34px_rgba(34,211,238,0.055),inset_0_1px_0_rgba(255,255,255,0.055)] backdrop-blur-md transition duration-300 hover:border-cyan-100/30 hover:bg-[#07182d]/66 hover:shadow-[0_26px_82px_rgba(0,0,0,0.38),0_0_40px_rgba(34,211,238,0.09),inset_0_1px_0_rgba(255,255,255,0.075)] sm:p-5 lg:items-center lg:gap-5 lg:p-6 xl:gap-7 ${
         isReversed
-          ? "lg:grid-cols-[minmax(0,1.42fr)_minmax(18rem,0.58fr)]"
-          : "lg:grid-cols-[minmax(18rem,0.58fr)_minmax(0,1.42fr)]"
+          ? "lg:grid-cols-[minmax(0,1.28fr)_minmax(20rem,0.72fr)]"
+          : "lg:grid-cols-[minmax(20rem,0.72fr)_minmax(0,1.28fr)]"
       }`}
       custom={direction}
       initial="hidden"
@@ -86,7 +86,7 @@ function ProjectArchiveFeaturedCard({ project, index = 0 }) {
             {project.year}
           </p>
           <h3
-            className="font-bruno mt-5 max-w-[13ch] text-[clamp(2rem,8vw,4rem)] leading-[1.04] text-slate-50 drop-shadow-[0_0_24px_rgba(34,211,238,0.12)] lg:text-[clamp(2.35rem,3.1vw,4rem)]"
+            className="font-bruno mt-5 max-w-[10.5ch] text-[clamp(2rem,7vw,3.55rem)] leading-[1.04] text-slate-50 drop-shadow-[0_0_24px_rgba(34,211,238,0.12)] sm:max-w-[12ch] lg:text-[clamp(2.25rem,2.65vw,3.55rem)] xl:max-w-[13ch]"
             data-cursor="text"
           >
             {project.title}

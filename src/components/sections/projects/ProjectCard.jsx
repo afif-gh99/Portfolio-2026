@@ -63,7 +63,7 @@ function ProjectCard({ project, variant = "small", index = 0 }) {
     ? "justify-between p-2 sm:p-3 lg:p-4 xl:p-5"
     : "pt-5";
   const titleClassName = isLarge
-    ? "text-[clamp(2rem,8vw,4.35rem)] lg:text-[clamp(2.35rem,3.35vw,4.35rem)]"
+    ? "text-[clamp(2rem,7vw,3.8rem)] lg:text-[clamp(2.35rem,3vw,3.8rem)] xl:text-[clamp(2.5rem,2.75vw,4rem)]"
     : "text-[clamp(1.55rem,7vw,2.25rem)]";
   const descriptionClassName = isLarge
     ? "max-w-124 sm:text-base sm:leading-8"
@@ -103,7 +103,7 @@ function ProjectCard({ project, variant = "small", index = 0 }) {
 
         <h3
           data-cursor="text"
-          className={`font-bruno mt-5 max-w-[13ch] leading-[1.04] text-slate-50 drop-shadow-[0_0_24px_rgba(34,211,238,0.12)] ${titleClassName}`}
+          className={`font-bruno mt-5 max-w-[10.5ch] sm:max-w-[12ch] xl:max-w-[13ch] leading-[1.04] text-slate-50 drop-shadow-[0_0_24px_rgba(34,211,238,0.12)] ${titleClassName}`}
         >
           {project.title}
         </h3>
