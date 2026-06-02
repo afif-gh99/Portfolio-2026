@@ -5,7 +5,6 @@ import "./index.css";
 import Root from "./pages/Root.jsx";
 import Home from "./pages/Home.jsx";
 import ProjectsArchive from "./pages/ProjectsArchive.jsx";
-import ProjectDetails from "./pages/ProjectDetails.jsx";
 import NotFound from "./pages/NotFound.jsx";
 
 const router = createBrowserRouter([
@@ -20,10 +19,6 @@ const router = createBrowserRouter([
       {
         path: "projects",
         element: <ProjectsArchive />,
-      },
-      {
-        path: "projects/:slug",
-        element: <ProjectDetails />,
       },
       {
         path: "*",

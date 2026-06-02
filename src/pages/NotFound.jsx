@@ -40,7 +40,7 @@ function NotFound() {
       />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute bottom-[10%] right-[10%] h-[28rem] w-[28rem] rounded-full bg-sky-500/7 blur-3xl"
+        className="pointer-events-none absolute bottom-[10%] right-[10%] h-112 w-md rounded-full bg-sky-500/7 blur-3xl"
       />
 
       <section
@@ -87,7 +87,7 @@ function NotFound() {
 
         <div
           aria-hidden="true"
-          className="relative min-h-[26rem] overflow-hidden border border-cyan-100/14 bg-[#061426]/42 p-6 shadow-[0_24px_90px_rgba(0,0,0,0.34),inset_0_1px_0_rgba(255,255,255,0.055)] backdrop-blur-xl sm:min-h-[31rem] sm:p-8"
+          className="relative min-h-104 overflow-hidden border border-cyan-100/14 bg-[#061426]/42 p-6 shadow-[0_24px_90px_rgba(0,0,0,0.34),inset_0_1px_0_rgba(255,255,255,0.055)] backdrop-blur-xl sm:min-h-124 sm:p-8"
         >
           <span className="absolute left-0 top-0 h-10 w-10 border-l border-t border-cyan-100/36" />
           <span className="absolute bottom-0 right-0 h-10 w-10 border-b border-r border-cyan-100/26" />
@@ -154,7 +154,7 @@ function NotFound() {
             <span className="absolute bottom-0 right-0 h-6 w-6 border-b border-r border-cyan-100/22" />
           </div>
 
-          <div className="font-osiris pointer-events-none absolute -right-1 -top-7 text-[9rem] leading-none text-cyan-100/[0.025] sm:text-[12rem]">
+          <div className="font-osiris pointer-events-none absolute -right-1 -top-7 text-[9rem] leading-none text-cyan-100/2.5 sm:text-[12rem]">
             404
           </div>
         </div>
