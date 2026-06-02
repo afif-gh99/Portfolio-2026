@@ -1,16 +1,15 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import './index.css'
-import Root from './pages/Root.jsx'
-import Home from './pages/Home.jsx'
-import ProjectsArchive from './pages/ProjectsArchive.jsx'
-import ProjectDetails from './pages/ProjectDetails.jsx'
-import NotFound from './pages/NotFound.jsx'
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import "./index.css";
+import Root from "./pages/Root.jsx";
+import Home from "./pages/Home.jsx";
+import ProjectsArchive from "./pages/ProjectsArchive.jsx";
+import ProjectDetails from "./pages/ProjectDetails.jsx";
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <Root />,
     children: [
       {
@@ -18,23 +17,19 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: 'projects',
+        path: "projects",
         element: <ProjectsArchive />,
       },
       {
-        path: 'projects/:slug',
+        path: "projects/:slug",
         element: <ProjectDetails />,
-      },
-      {
-        path: '*',
-        element: <NotFound />,
       },
     ],
   },
-])
+]);
 
-createRoot(document.getElementById('root')).render(
+createRoot(document.getElementById("root")).render(
   <StrictMode>
     <RouterProvider router={router} />
   </StrictMode>,
-)
+);
