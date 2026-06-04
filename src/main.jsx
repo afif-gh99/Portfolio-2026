@@ -6,6 +6,7 @@ import Root from "./pages/Root.jsx";
 import Home from "./pages/Home.jsx";
 import ProjectsArchive from "./pages/ProjectsArchive.jsx";
 import NotFound from "./pages/NotFound.jsx";
+import { Analytics } from "@vercel/analytics/react";
 
 const router = createBrowserRouter([
   {
@@ -31,5 +32,6 @@ const router = createBrowserRouter([
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <RouterProvider router={router} />
+    <Analytics />
   </StrictMode>,
 );
