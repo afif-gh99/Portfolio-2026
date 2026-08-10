@@ -14,7 +14,7 @@ export const projects = [
     description:
       "A digital art exhibition held under the patronage of the Syrian Ministry of Culture, bringing emerging creatives together to showcase their work, connect with audiences, and celebrate the evolution of digital art.",
     projectUrl: null,
-    image: "/assets/projects/DAE.png",
+    image: "/assets/projects/DAE.webp",
     featured: true,
     featuredLayout: "small",
   },
@@ -34,7 +34,7 @@ export const projects = [
     description:
       "An internal management system developed for Blink to centralize and streamline its outdoor and digital advertising operations, helping teams manage daily workflows more efficiently and stay better connected.",
     projectUrl: null,
-    image: "/assets/projects/blink.png",
+    image: "/assets/projects/blink.webp",
     featured: true,
     featuredLayout: "large",
   },
@@ -48,7 +48,7 @@ export const projects = [
     description:
       "A React dashboard connected to a real e-commerce API, built to organize products, data views, and interface states with a clean admin experience.",
     projectUrl: "https://dashstack-t.vercel.app/",
-    image: "/assets/projects/dashstack.png",
+    image: "/assets/projects/dashstack.webp",
     featured: true,
     featuredLayout: "small",
   },
@@ -62,7 +62,7 @@ export const projects = [
     description:
       "A travel-company landing page focused on structured React components, TypeScript usage, and clean responsive presentation.",
     projectUrl: "https://github.com/afif-gh99/Trippy",
-    image: "/assets/projects/trippy.png",
+    image: "/assets/projects/trippy.webp",
     featured: false,
     featuredLayout: "small",
   },
@@ -75,7 +75,7 @@ export const projects = [
     description:
       "A landing page built with HTML and CSS, focused on visual effects, layout rhythm, and frontend fundamentals.",
     projectUrl: "https://afif-gh99.github.io/FINGO/",
-    image: "/assets/projects/fingo.png",
+    image: "/assets/projects/fingo.webp",
     featured: false,
   },
   {
@@ -87,7 +87,7 @@ export const projects = [
     description:
       "An educational-institution dashboard interface styled with a custom local CSS utility library built specifically for the project.",
     projectUrl: "https://afif-gh99.github.io/MyDash/",
-    image: "/assets/projects/mydash.png",
+    image: "/assets/projects/mydash.webp",
     featured: false,
     featuredLayout: "small",
   },
@@ -100,7 +100,7 @@ export const projects = [
     description:
       "A clean landing page built with HTML and CSS, focused on layout practice, visual structure, and responsive fundamentals.",
     projectUrl: "https://afif-gh99.github.io/Kasper/",
-    image: "/assets/projects/kasper.png",
+    image: "/assets/projects/kasper.webp",
     featured: false,
   },
   {
@@ -112,7 +112,7 @@ export const projects = [
     description:
       "A simple landing page built with HTML and CSS, focused on foundational layout, spacing, and visual hierarchy.",
     projectUrl: "https://afif-gh99.github.io/Leon/",
-    image: "/assets/projects/leon.png",
+    image: "/assets/projects/leon.webp",
     featured: false,
   },
 ];
