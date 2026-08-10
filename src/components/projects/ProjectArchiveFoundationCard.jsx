@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import ProjectAccessState from "./ProjectAccessState.jsx";
 
 const foundationCardVariants = {
   hidden: {
@@ -75,19 +76,11 @@ function ProjectArchiveFoundationCard({ project, index = 0 }) {
         </p>
       </div>
 
-      {project.projectUrl ? (
-        <a
-          aria-label={`Visit ${project.title}`}
-          className="font-oxanium inline-flex min-h-11 w-fit items-center justify-center border border-cyan-100/22 bg-cyan-100/6 px-4 py-3 text-[10px] font-semibold uppercase tracking-[0.18em] text-cyan-50 shadow-[0_0_18px_rgba(34,211,238,0.07),inset_0_1px_0_rgba(255,255,255,0.06)] transition duration-300 hover:border-cyan-100/42 hover:bg-cyan-100/11 hover:shadow-[0_0_24px_rgba(34,211,238,0.14)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-200/55 focus-visible:ring-offset-2 focus-visible:ring-offset-[#020817] lg:ml-4"
-          data-cursor="interactive"
-          data-sound-hover="hover"
-          href={project.projectUrl}
-          rel="noopener noreferrer"
-          target="_blank"
-        >
-          VISIT PROJECT
-        </a>
-      ) : null}
+      <ProjectAccessState
+        className="lg:ml-4 lg:max-w-52"
+        linkClassName="font-oxanium inline-flex min-h-11 w-fit items-center justify-center border border-cyan-100/22 bg-cyan-100/6 px-4 py-3 text-[10px] font-semibold uppercase tracking-[0.18em] text-cyan-50 shadow-[0_0_18px_rgba(34,211,238,0.07),inset_0_1px_0_rgba(255,255,255,0.06)] transition duration-300 hover:border-cyan-100/42 hover:bg-cyan-100/11 hover:shadow-[0_0_24px_rgba(34,211,238,0.14)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-200/55 focus-visible:ring-offset-2 focus-visible:ring-offset-[#020817] lg:ml-4"
+        project={project}
+      />
     </motion.article>
   );
 }

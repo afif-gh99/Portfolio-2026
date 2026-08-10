@@ -7,11 +7,17 @@ import ProjectArchiveFoundationCard from "../components/projects/ProjectArchiveF
 import { projects } from "../data/projects.js";
 
 const featuredProjectSlugs = [
+  "blink-internal-system",
+  "digital-art-exhibition",
   "dashstack-dashboard",
+];
+const foundationProjectSlugs = [
   "trippy",
   "mydash-dashboard",
+  "fingo",
+  "kasper",
+  "leon",
 ];
-const foundationProjectSlugs = ["fingo", "kasper", "leon"];
 
 const copyVariants = {
   hidden: {

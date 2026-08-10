@@ -1,4 +1,5 @@
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import ProjectAccessState from "../../projects/ProjectAccessState.jsx";
 
 const cardVariants = {
   hidden: () => ({
@@ -95,7 +96,11 @@ function ProjectCard({ project, variant = "small", index = 0 }) {
   };
 
   const cardContent = (
-    <div className={`relative z-10 flex flex-col ${contentClassName}`}>
+    <div
+      className={`relative z-10 flex flex-col ${contentClassName} ${
+        isLarge ? "order-2 lg:order-1" : ""
+      }`}
+    >
       <div>
         <p className="font-osiris text-xs uppercase tracking-[0.32em] text-cyan-100/54">
           {project.year}
@@ -103,7 +108,7 @@ function ProjectCard({ project, variant = "small", index = 0 }) {
 
         <h3
           data-cursor="text"
-          className={`font-bruno mt-5 max-w-[10.5ch] sm:max-w-[12ch] xl:max-w-[13ch] leading-[1.04] text-slate-50 drop-shadow-[0_0_24px_rgba(34,211,238,0.12)] ${titleClassName}`}
+          className={`font-bruno mt-5 max-w-[10.5ch] sm:max-w-[30ch] xl:max-w-[13ch]  leading-[1.04] text-slate-50 drop-shadow-[0_0_24px_rgba(34,211,238,0.12)] ${titleClassName}`}
         >
           {project.title}
         </h3>
@@ -126,26 +131,19 @@ function ProjectCard({ project, variant = "small", index = 0 }) {
           {project.description}
         </p>
       </div>
-
-      {project.projectUrl ? (
-        <a
-          aria-label={`Visit ${project.title}`}
-          className="font-oxanium mt-7 inline-flex min-h-11 w-fit items-center justify-center border border-cyan-100/24 bg-cyan-100/7 px-4 py-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-cyan-50 shadow-[0_0_22px_rgba(34,211,238,0.08),inset_0_1px_0_rgba(255,255,255,0.07)] transition duration-300 hover:border-cyan-100/46 hover:bg-cyan-100/12 hover:shadow-[0_0_28px_rgba(34,211,238,0.16)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-200/55 focus-visible:ring-offset-2 focus-visible:ring-offset-[#020817]"
-          data-cursor="interactive"
-          data-sound-hover="hover"
-          href={project.projectUrl}
-          rel="noopener noreferrer"
-          target="_blank"
-        >
-          VISIT PROJECT
-        </a>
-      ) : null}
+      <ProjectAccessState
+        className="mt-7"
+        linkClassName="font-oxanium mt-7 inline-flex min-h-11 w-fit items-center justify-center border border-cyan-100/24 bg-cyan-100/7 px-4 py-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-cyan-50 shadow-[0_0_22px_rgba(34,211,238,0.08),inset_0_1px_0_rgba(255,255,255,0.07)] transition duration-300 hover:border-cyan-100/46 hover:bg-cyan-100/12 hover:shadow-[0_0_28px_rgba(34,211,238,0.16)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-200/55 focus-visible:ring-offset-2 focus-visible:ring-offset-[#020817]"
+        project={project}
+      />
     </div>
   );
 
   const imageFrame = (
     <motion.div
-      className={`relative z-10 overflow-hidden rounded-[7px] border border-cyan-100/16 bg-[#020817]/74 shadow-[0_18px_42px_rgba(0,0,0,0.26),inset_0_1px_0_rgba(255,255,255,0.05)] ${isLarge ? "" : "p-2 sm:p-3"} ${imageFrameClassName}`}
+      className={`relative z-10 overflow-hidden rounded-[7px] border border-cyan-100/16 bg-[#020817]/74 shadow-[0_18px_42px_rgba(0,0,0,0.26),inset_0_1px_0_rgba(255,255,255,0.05)] ${
+        isLarge ? "order-1 lg:order-2" : "p-2 sm:p-3"
+      } ${imageFrameClassName}`}
       custom={{ isLarge, index }}
       variants={imageVariants}
     >

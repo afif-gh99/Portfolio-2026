@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import ProjectAccessState from "./ProjectAccessState.jsx";
 
 const featuredCardVariants = {
   hidden: (direction) => ({
@@ -106,19 +107,11 @@ function ProjectArchiveFeaturedCard({ project, index = 0 }) {
           </p>
         </div>
 
-        {project.projectUrl ? (
-          <a
-            aria-label={`Visit ${project.title}`}
-            className="font-oxanium mt-7 inline-flex min-h-11 w-fit items-center justify-center border border-cyan-100/24 bg-cyan-100/7 px-4 py-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-cyan-50 shadow-[0_0_22px_rgba(34,211,238,0.08),inset_0_1px_0_rgba(255,255,255,0.07)] transition duration-300 hover:border-cyan-100/46 hover:bg-cyan-100/12 hover:shadow-[0_0_28px_rgba(34,211,238,0.16)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-200/55 focus-visible:ring-offset-2 focus-visible:ring-offset-[#020817]"
-            data-cursor="interactive"
-            data-sound-hover="hover"
-            href={project.projectUrl}
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            VISIT PROJECT
-          </a>
-        ) : null}
+        <ProjectAccessState
+          className="mt-7"
+          linkClassName="font-oxanium mt-7 inline-flex min-h-11 w-fit items-center justify-center border border-cyan-100/24 bg-cyan-100/7 px-4 py-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-cyan-50 shadow-[0_0_22px_rgba(34,211,238,0.08),inset_0_1px_0_rgba(255,255,255,0.07)] transition duration-300 hover:border-cyan-100/46 hover:bg-cyan-100/12 hover:shadow-[0_0_28px_rgba(34,211,238,0.16)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-200/55 focus-visible:ring-offset-2 focus-visible:ring-offset-[#020817]"
+          project={project}
+        />
       </div>
 
       <motion.div

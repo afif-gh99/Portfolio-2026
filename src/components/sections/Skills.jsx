@@ -93,7 +93,7 @@ function Skills() {
   const skillsSectionRef = useRef(null);
   const copyRef = useRef(null);
   const isCopyInView = useInView(copyRef, {
-    amount: 0.34,
+    amount: 0.4,
     margin: "-10% 0px -10% 0px",
   });
 
