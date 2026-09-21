@@ -116,7 +116,7 @@ function ProjectCard({ project, variant = "small", index = 0 }) {
         <div className="mt-5 flex flex-wrap gap-2">
           {project.stack.map((technology) => (
             <span
-              className="font-oxanium rounded-full border border-cyan-100/14 bg-[#020817]/54 px-3 py-1.5 text-[10px] font-medium uppercase tracking-[0.12em] text-slate-200/78 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]"
+              className="font-oxanium rounded-full border  border-cyan-100/14 bg-[#020817]/54 px-3 py-1.5 text-[10px] font-medium uppercase tracking-[0.12em] text-slate-200/78 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]"
               key={technology}
             >
               {technology}
